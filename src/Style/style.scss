@@ -1,0 +1,555 @@
+@mixin flex-center() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin media330() {
+    @media (max-width: 330px) {
+        @content;
+    }
+}
+@mixin media770() {
+    @media (max-width: 770px) {
+        @content;
+    }
+}
+@mixin media380() {
+    @media (max-width: 380px) {
+        @content;
+    }
+}
+@mixin media850() {
+    @media (max-width: 850px) {
+        @content;
+    }
+}
+@mixin media610() { 
+    @media (max-width: 610px) {
+        @content;
+    }
+}
+
+body, #root {
+    height: 100vh;
+}
+a:hover, a:focus { 
+    outline: 0; 
+    border: none; 
+    text-decoration: none;
+}
+
+.plus, .minus, .empty, .info {
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+}
+.plus {
+    background-color: rgb(0, 110, 255);
+    &:hover {
+        background-color: blue; 
+    }
+}
+.minus {
+    @include flex-center();
+    height: 38.56px;
+    background-color: rgb(224, 37, 77);
+    font-size: 3rem;
+    padding: 0 1.5rem;
+    &:hover {
+        background-color: red;
+    }
+}
+.empty {
+    background-color: yellowgreen;
+    padding: 0.2rem 1rem;
+    &:hover {
+        background-color: rgb(109, 196, 109);
+    }
+}
+.info {
+    background-color: green;
+    &:hover {
+        background-color: darkgreen;
+    }
+}
+
+//*--- NAVBAR ---*//
+.navbar {
+    width: 100%;
+    margin: 0;
+    background-color: gainsboro;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding: 1%;
+    box-shadow: 1px 2px 4px 1px gray;
+    @include media330() {
+        align-items: center;
+    }
+    h1 {
+        margin: 0;
+        width: 50%; 
+        color: black;
+        @include media330() {
+            font-size: 150%;
+        }
+    }
+    div.link {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        width: 30%;
+        a.link { 
+            margin-bottom: 5px;
+        }
+        p {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            @include flex-center();
+            .fa-solid {
+                font-size: 2.75rem;
+                color: black;
+            }
+            .badge {
+                background-color: red;
+                border-radius: 50%;
+                position: absolute;
+                left: 75%;
+                top: -20%;
+            }
+        }
+    }
+}
+
+//*--- FOOTER ---*//
+.footer {
+    height: 10%;
+    color: black;
+    width: 100%;
+    padding: 3.5rem 0 2.5rem 0;
+    @include flex-center();
+}
+
+//*--- PRODUCT LISTING PAGE ---*//
+.productlisting, .detail, .basket {
+    padding: 3rem 0;
+    width: 100%;
+    background-color: lightblue;
+}
+
+//*--- PRODUCT COMPONENT ---*//
+.productComponent {
+    margin-top: 2rem;
+    color: gainsboro;
+    background-color: rgb(59, 54, 54);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    .top {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1.9rem 0 1.2rem;
+        width: 100%;
+        span.badge-success {
+            background-color: rgb(45, 175, 101);
+            border-radius: 5px;
+            font-size: 100%;
+            padding: 0 10px;
+            height: 2.1rem;
+            @include flex-center();
+        }
+        p {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            @include flex-center();
+            .fa-solid {
+                font-size: 2.5rem;
+                color: gainsboro;
+            }
+            .badge { 
+                width: 19px;
+                height: 17px;
+                @include flex-center();
+                background-color: red;
+                border-radius: 50%;
+                position: absolute;
+                left: 75%;
+                top: -20%;
+            }
+        }
+    }
+    .image {
+        @include flex-center();
+        img {
+            height: 25rem;
+            @include media330() {
+                height: 18rem;
+            }
+        }
+    }
+    .name {
+        @include flex-center();
+        h3 {
+            width: fit-content;
+            padding: 3px 2rem;
+            border-radius: 4px;
+            background-color: rgb(203, 221, 38);
+            color: rgb(56, 56, 56);
+            text-transform: uppercase;
+            @include media330() {
+                font-size: 140%;
+            }
+        }
+    }
+    .description {
+        padding: 0 1rem;
+        text-align: center;
+        margin-top: 1.5rem;
+        @include flex-center();
+        color:  white;
+        margin-bottom: 1.5rem;
+    }
+    .bottom {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        a {
+            width: 15rem;
+            height: 34px;
+            border-radius: 5px;
+            background-color: gainsboro;
+            button {
+                width: 15rem;
+                background-color: gainsboro;
+                border-radius: 5px;
+                &:hover {text-decoration: none;}
+                @include flex-center(); 
+                @include media330() {
+                    width: 10rem;
+                }
+            }
+            @include media330() {
+                width: 10rem;
+            }
+        }
+    }
+}
+
+//*--- PRODUCT DETAIL ---*//
+.detail {
+    width: 100%;
+    @include flex-center();
+    .selectedProduct {
+        padding-bottom: 2rem;
+        color: white;
+        background-color: rgb(59, 54, 54);
+        .heading {
+            @include flex-center();
+            text-transform: uppercase;
+            h1 {
+                font-size: 320%;
+                font-weight: bold;
+                @include media380() {
+                    font-size: 200%;
+                }
+            } 
+            margin-bottom: 1rem;
+        }
+        .description {
+            @include flex-center();
+            padding-bottom: 1rem;
+            border-bottom: 0.5px solid white;
+            p {
+                text-align: center;
+                font-size: 2.1rem;
+                @include media380() {
+                    font-size: 1.5rem;
+                    text-align: left;   
+                }
+            }
+        }
+        .details {
+            display: flex;
+            align-items: center;
+            padding-top: 3rem;
+            @include media770() {
+                flex-direction: column;
+            }
+            .price {
+                @include flex-center();
+                flex-direction: column;
+                width: 55%;
+                @include media770() {
+                    width: 90%;
+                }
+                @include media380() {
+                    width: 100%;
+                }
+                p {
+                    font-size: 1.6rem;
+                    text-align: center;
+                    @include media770() {
+                        text-align: left;
+                        width: 100%;
+                    }
+                    @include media380() {
+                        font-size: 1.3rem;
+                    }
+                    span {
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        color: lightcoral;
+                    }
+                }
+            }
+            .shoe {
+                width: 45%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img {
+                    height: 20rem;
+                    @include media380() {
+                        height: 15rem;
+                    }
+                    @include media330() {
+                        height: 12rem;
+                    }
+                }
+                button {
+                    @include flex-center();
+                    height: 3rem;
+                    font-size: 1.8rem;
+                    margin: 0 0.5rem;
+                    @include media380() {
+                        height: 2.5rem;
+                        font-size: 1.5rem;
+                    }
+                }
+                .minus {
+                    font-size: 3rem;
+                    padding: 0 1.2rem;
+                }
+            }
+        }
+    }
+    .bottom {
+        button {
+            color: black;
+            background-color: lightgray;
+            &:hover {
+                background-color: whitesmoke;
+            }
+        }
+    }
+}
+
+//*--- BASKET ---*//
+.basket {
+    .bs {
+        width: 75%;
+        padding: 0;
+        .head {
+            background-color: lightgray;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            border: 1px solid black;
+            div {
+                @include flex-center();
+                padding: 1rem 0;
+                h1, p {
+                    margin: 0 1rem;
+                    @include media610() {
+                        margin: 0 0.5rem;
+                    }
+                    @include media380() {
+                        margin: 0 0.3rem;
+                    }
+                }
+                .head-num {
+                    color: black;
+                    width: 3.2rem;
+                    height: 3.4rem;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    font-size: 2.3rem;
+                    @include flex-center();
+                    background-color: white;
+                    @include media850() {
+                        font-size: 1.7rem;
+                        width: 2.9rem;
+                        height: 3rem;
+                    }
+                    @include media610() {
+                        font-size: 1.2rem;
+                        width: 2.3rem;
+                        height: 2.3rem;
+                    }
+                    @include media380() {
+                        font-size: 1rem;
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+                @include media850() {
+                    h1 {
+                        font-size: 2rem;
+                    }
+                }
+                @include media610() {
+                    h1 {
+                        font-size: 1.5rem;
+                    }
+                }
+                @include media380() {
+                    h1 {
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+            .order {
+                width: 40%;
+                border-right: 1px solid black;
+            }
+            .bill {
+                justify-content: center;
+                width: 60%;
+                .head-num {
+                    width: 5rem;
+                    @include media850() {
+                        width: 4rem;
+                    }
+                    @include media610() {
+                        width: 3rem;
+                    }
+                    @include media380() {
+                        width: 2.5rem;
+                    }
+                }
+                button {
+                    @include flex-center();
+                    text-align: center;
+                    color: black;
+                    background-color: rgb(253, 253, 98);
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    padding: 2px 0.5rem;
+                    border-radius: 4px;
+                    justify-self: flex-end;
+                    margin-left: 10%;
+                    margin-right: 2rem;
+                    border: none;
+                    &:hover {
+                        background-color: rgb(231, 228, 56);
+                    }
+                    @include media770() {
+                        // margin-left: 5rem;
+                    }
+                    @include media610() {
+                        font-size: 1.1rem;
+                        padding: 2px 4px;
+                    }
+                    @include media380() {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+        table {
+            width: 100%;
+            border: gainsboro;
+            color: gainsboro;
+            text-transform: uppercase;
+            .thead {
+                color: white;
+                .tr {
+                    &:hover {
+                        background-color: rgb(59, 54, 54);
+                    }
+                }
+                @include media610() {
+                    font-size: 1.1rem;
+                }
+                @include media380() {
+                    font-size: 0.8rem;
+                }
+            }
+            .tr {
+                background-color: rgb(59, 54, 54);
+                &:hover {
+                    background-color: rgb(97, 89, 89);
+                }
+                @include media610() {
+                    font-size: 1.1rem;
+                }
+                @include media380() {
+                    font-size: 0.8rem;
+                }
+            }
+            .white {
+                color: white;
+            }
+            .td {
+                text-align: center;
+            }
+            .one {
+                width: 10%;
+            }
+            .two {
+                width: 30%;
+            }
+            .four {
+                width: 15%;
+            }
+            .five, .six, .seven, .eight {
+                width: 7%;
+            }
+            @include media610() {
+                .five, .six, .seven {
+                    display: none;
+                }
+            }
+            .tbody {
+                button {
+                    font-size: 1.2rem;
+                    width: 32.88px;
+                    height: 28.5px;
+                    margin-right: 0;
+                    @include media850() {
+                        font-size: 1rem;
+                        width: 16%;
+                        height: 20%;
+                        @include flex-center();    
+                    }
+                    @include media380() {
+                        font-size: 0.6rem;
+                        width: 10%;
+                        height: 15%;
+                    }
+                }
+                .minus {
+                    font-size: 3rem;
+                    @include media850() {
+                        font-size: 1.2rem;
+                        padding: 0 0.7rem;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+                .six {
+                    padding-left: 1.4rem;
+                }
+                @include media850(){
+                    .empty {
+                        padding-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
